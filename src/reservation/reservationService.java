@@ -43,13 +43,13 @@ public class reservationService  {
 		reservationDto.setrDate(rDate);
 		reservationDao.insert(reservationDto);
 	}
-	public void showTimePage() {
+	public void showTimePage(Parent parent) {
 		System.out.println("showTimePage");
 		FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("showTimePage.fxml"));
 		try {
-			Parent parent=fxmlLoader.load();
+			Parent parent2=fxmlLoader.load();
 			Stage stage=new Stage();
-			stage.setScene(new Scene(parent));
+			stage.setScene(new Scene(parent2));
 			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

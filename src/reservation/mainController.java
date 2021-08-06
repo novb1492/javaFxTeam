@@ -29,7 +29,7 @@ public class mainController  implements Initializable  {
 		reservationService=new reservationService();
 		day1.setOnMouseClicked((event)->{
 			reservationService.setDate(1);
-			reservationService.showTimePage();
+			reservationService.showTimePage(parent);
 		});
 		day2.setOnMouseClicked((event)->{
 			reservationService.setDate(2);
