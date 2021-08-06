@@ -9,7 +9,7 @@
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label  fx:id="month" text="8" />
+            <Label fx:id="month" text="8" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
@@ -61,6 +61,7 @@
             <Button fx:id="day29" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
             <Button fx:id="day30" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
             <Button fx:id="day31" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button mnemonicParsing="false" onAction="#insert" text="예약" />
          </children>
       </HBox>
    </children>

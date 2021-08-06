@@ -35,9 +35,8 @@ public class mainController  implements Initializable  {
 		});
 	}
 	
-	public void onClick() {
-
-
+	public void insert() {
+		reservationService.insert(parent,"kim@kim.com","kim");
 	
 	}
 
