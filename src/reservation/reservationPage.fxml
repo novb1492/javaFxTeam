@@ -14,8 +14,8 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="day1" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day2" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day1" mnemonicParsing="false" onAction="#click" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day2" mnemonicParsing="false" onAction="#click2" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
             <Button fx:id="day3" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
             <Button fx:id="day4" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
             <Button fx:id="day5" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
