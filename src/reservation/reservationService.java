@@ -5,8 +5,11 @@ package reservation;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 
 public class reservationService  {
@@ -39,6 +42,18 @@ public class reservationService  {
 		reservationDto.setTime(time);
 		reservationDto.setrDate(rDate);
 		reservationDao.insert(reservationDto);
+	}
+	public void showTimePage() {
+		System.out.println("showTimePage");
+		FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("showTimePage.fxml"));
+		try {
+			Parent parent=fxmlLoader.load();
+			Stage stage=new Stage();
+			stage.setScene(new Scene(parent));
+			stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 

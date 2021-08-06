@@ -29,6 +29,7 @@ public class mainController  implements Initializable  {
 		reservationService=new reservationService();
 		day1.setOnMouseClicked((event)->{
 			reservationService.setDate(1);
+			reservationService.showTimePage();
 		});
 		day2.setOnMouseClicked((event)->{
 			reservationService.setDate(2);
@@ -37,7 +38,6 @@ public class mainController  implements Initializable  {
 	
 	public void insert() {
 		reservationService.insert(parent,"kim@kim.com","kim");
-	
 	}
 
 
