@@ -62,6 +62,8 @@
             <Button fx:id="day30" mnemonicParsing="false" onAction="#click30" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
             <Button fx:id="day31" mnemonicParsing="false" onAction="#click31" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
             <Button mnemonicParsing="false" onAction="#goToShowRerservationPage" text="예약내역페이지" />
+            <Label fx:id="name" text="Label" />
+            <Label text=" 님 환영합니다" />
          </children>
       </HBox>
    </children>

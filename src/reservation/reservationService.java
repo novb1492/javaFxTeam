@@ -11,8 +11,7 @@ import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,6 +20,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
@@ -31,15 +31,17 @@ public class reservationService  {
 	private final int maxOfDay=60;
 	private final int maxPeopleByTime=6;
 	private reservationDao reservationDao=new reservationDao();
+
 	
-	public void showDatePage() {
+	public void showDatePage(Parent parent,String email,String name) {
 		System.out.println("showDatePage");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("reservationPage.fxml"));
 		Parent root=loadPageAndGetParent(loader);
 		LocalDate today=LocalDate.now();
 		YearMonth yearMonth=YearMonth.from(today);
 		int lastDay=yearMonth.lengthOfMonth();
-
+		
+		showName(root, name);
 		getMonth(root,today);
 		getDays(root, lastDay);
 		showStage(root, "reservationPage");
@@ -47,6 +49,12 @@ public class reservationService  {
 		mainController mainController=loader.getController();
 		mainController.setParent(root);
 		
+	}
+
+	public void showName(Parent root,String name) {
+		System.out.println("showname");
+		Label showEmail=(Label)root.lookup("#name");
+		showEmail.setText(name);
 	}
 	private Parent loadPageAndGetParent(FXMLLoader loader) {
 		System.out.println("loadPageAndGetParent");
@@ -231,6 +239,8 @@ public class reservationService  {
 			reservationDto.setTime(time);
 			reservationDto.setrDate(rDate);
 			reservationDao.insert(reservationDto);
+			System.out.println("예약성공");
+			closeWindow(parent2);
 		} catch (Exception e) {
 			System.out.println("예약중 오류 발생");
 			e.printStackTrace();
@@ -239,7 +249,6 @@ public class reservationService  {
 	}
 	public int getSelectTime(Parent parent2) {
 		List<RadioButton>array=new ArrayList<RadioButton>();
-		LocalDateTime localDateTime=LocalDateTime.now();
 		int time=0;
 		for(int i=openTime;i<=closeTime;i++) {
 			array.add((RadioButton)parent2.lookup("#rdaio"+i));
@@ -256,6 +265,10 @@ public class reservationService  {
 	public Timestamp stringToTimestamp(String month,int day) {
 		return Timestamp.valueOf("2021-"+month+"-"+day+" 00:00:00");
 	}
-	
+	public void closeWindow(Parent parent) {
+		System.out.println("closeWindow");
+		Stage stage=(Stage) parent.getScene().getWindow();
+		stage.close();
+	}
 
 }

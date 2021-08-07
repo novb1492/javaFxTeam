@@ -2,11 +2,12 @@ package reservation;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
+
+import javafx.event.ActionEvent;
+
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+
 
 
 public class mainController  implements Initializable  {
@@ -14,8 +15,11 @@ public class mainController  implements Initializable  {
 	private Parent parent;
 	private Parent parent2;
 	private reservationService reservationService;
-	int day;
-
+	private cancleService cancleService;
+	private int day;
+	private String tempEmail="kim@kim.com";
+	private String tempName="kim";
+	
 	public void setParent(Parent parent) {
 		this.parent=parent;
 	}
@@ -28,6 +32,7 @@ public class mainController  implements Initializable  {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		reservationService=new reservationService();
+		cancleService=new cancleService();
 	}
 	public void click() {
 		System.out.println("click1");
@@ -156,13 +161,19 @@ public class mainController  implements Initializable  {
 		reservationService.insert(parent,"kim@kim.com","kim",parent2,day);
 	}
 	public void show() {
-		System.out.println("show");
 		reservationService.showTimePage(parent,day);
 	}
 	public void goToShowRerservationPage() {
 		System.out.println("여기입니다");
 	}
-
-
+	public void showDatePage() {
+		reservationService.showDatePage(parent,tempEmail,tempName);
+	}
+	public void closeWindow() {
+		reservationService.closeWindow(parent);
+	}
+	public void CancelProc(ActionEvent actionEvent) {
+		cancleService.windowClose(actionEvent);
+	}
 
 }

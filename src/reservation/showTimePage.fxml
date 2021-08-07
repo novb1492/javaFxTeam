@@ -6,7 +6,7 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reservation.mainController">
+<VBox maxHeight="400.0" maxWidth="200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="200.0" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reservation.mainController">
    <children>
       <Label text="선택한 날짜" />
       <Label fx:id="labelDate" text="Label" />
@@ -23,6 +23,7 @@
       <RadioButton fx:id="rdaio16" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
       <RadioButton fx:id="rdaio17" mnemonicParsing="false" text="17~18시" toggleGroup="$toggle" />
       <RadioButton fx:id="rdaio18" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
-      <Button mnemonicParsing="false" onAction="#insert" text="Button" />
+      <Button mnemonicParsing="false" onAction="#insert" text="예약하기" />
+      <Button fx:id="sd" mnemonicParsing="false" onAction="#CancelProc" text="닫기" />
    </children>
 </VBox>
