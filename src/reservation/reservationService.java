@@ -80,6 +80,23 @@ public class reservationService  {
 			System.out.println("끝달이 31이 아닙니다");
 			Button button=(Button) root.lookup("#day31");
 			button.setText("x");
+			button.setDisable(true);
+		}
+		else if(lastDay==29||lastDay==28) {
+			System.out.println("끝달이 28/29입니다");
+			List<Button>buttons=new ArrayList<Button>();
+			for(int i=29;i<=31;i++) {
+				buttons.add((Button) root.lookup("#day"+i));
+			}
+			int temp=0;
+			if(lastDay==29) {
+				temp=1;
+			}
+			for(int i=temp;i<buttons.size();i++) {
+				Button button=buttons.get(i);
+				button.setText("x");
+				button.setDisable(true);
+			}
 		}
 	}
 	private void showStage(Parent root,String pageName ) {
