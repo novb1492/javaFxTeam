@@ -173,7 +173,7 @@ public class reservationService  {
 			Label month=(Label)parent.lookup("#month");
 			int time=getSelectTime(parent2);
 			LocalDateTime localDateTime=LocalDateTime.now(); 
-			if(day==0&&day>31) {
+			if(day==0||day>31) {
 				System.out.println("잘못된 날짜 선택입니다");
 				return;
 			}
