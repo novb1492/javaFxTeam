@@ -37,6 +37,10 @@ public class mainController  implements Initializable  {
 		System.out.println("2");
 		day=2;
 	}
+	public void click7() {
+		System.out.println("click7");
+		day=7;
+	}
 	public void insert() {
 		reservationService.insert(parent,"kim@kim.com","kim",parent2,day);
 	}

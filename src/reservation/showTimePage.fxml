@@ -7,11 +7,19 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reservation.mainController">
    <children>
-      <RadioButton mnemonicParsing="false" text="RadioButton">
+      <RadioButton fx:id="rdaio9" mnemonicParsing="false" text="RadioButton">
          <toggleGroup>
             <ToggleGroup fx:id="toggle" />
          </toggleGroup></RadioButton>
-      <RadioButton mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
+      <RadioButton fx:id="rdaio10" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
+      <RadioButton fx:id="rdaio11" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
+      <RadioButton fx:id="rdaio12" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
+      <RadioButton fx:id="rdaio13" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
+      <RadioButton fx:id="rdaio14" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
+      <RadioButton fx:id="rdaio15" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
+      <RadioButton fx:id="rdaio16" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
+      <RadioButton fx:id="rdaio17" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
+      <RadioButton fx:id="rdaio18" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
       <Button mnemonicParsing="false" onAction="#insert" text="Button" />
    </children>
 </VBox>

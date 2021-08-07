@@ -13,11 +13,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
 
 public class reservationService  {
 	
+	private final int openTime=9;
+	private final int closeTime=18;
+	private final int maxOfDay=60;
 	private reservationDao reservationDao=new reservationDao();
 	
 	public void showDatePage() {
@@ -81,29 +85,13 @@ public class reservationService  {
 		System.out.println("checkFullDay"+timestamp);
 		List<reservationDto>array=findByDate(timestamp);
 		System.out.println(array.size()+"예약개수");
-		if(array.size()>=6) {
+		if(array.size()>=maxOfDay) {
 			return true;
 		}
 		return false;
 	}
 	public List<reservationDto> findByDate(Timestamp timestamp) {
 		return reservationDao.findAllByDate(timestamp);
-	}
-	public void showTimePage(Parent parent,int day) {
-		System.out.println("showTimePage");
-		FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("showTimePage.fxml"));
-		try {
-			Parent parent2=fxmlLoader.load();
-			Stage stage=new Stage();
-			stage.setScene(new Scene(parent2));
-			stage.show();
-			
-			mainController mainController=fxmlLoader.getController();
-			mainController.setParent2(parent,parent2,day);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	public boolean compareDate(Timestamp timestamp,LocalDateTime localDateTime) {
 		LocalDateTime loaDateTime2=timestamp.toLocalDateTime();
@@ -115,6 +103,35 @@ public class reservationService  {
            return true;
         }
         return false;
+	}
+	public void showTimePage(Parent parent,int day) {
+		System.out.println("showTimePage");
+		FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("showTimePage.fxml"));
+		try {
+			Parent parent2=fxmlLoader.load();
+			Stage stage=new Stage();
+			
+			getTimes(parent2);
+			stage.setScene(new Scene(parent2));
+			stage.show();
+			
+			mainController mainController=fxmlLoader.getController();
+			mainController.setParent2(parent,parent2,day);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	private void getTimes(Parent parent2) {
+		System.out.println("getTimes");
+		LocalDateTime localDateTime=LocalDateTime.now();
+		for(int i=openTime;i<=closeTime;i++) {
+			RadioButton radioButton=(RadioButton) parent2.lookup("#rdaio"+i);
+			radioButton.setText(i+"시~"+(i+1)+"시");
+			if(i<=localDateTime.getHour()) {
+				radioButton.setDisable(true);
+			}
+		}
 	}
 	public void insert(Parent parent,String email,String name,Parent parent2,int day) {
 		try {
