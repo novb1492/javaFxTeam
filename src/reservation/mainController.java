@@ -23,7 +23,7 @@ public class mainController  implements Initializable  {
 	public void setParent(Parent parent) {
 		this.parent=parent;
 	}
-	public void setParent2(Parent parent,Parent parent2,int day) {
+	public void setinsert(Parent parent,Parent parent2,int day) {
 		this.parent=parent;
 		this.parent2=parent2;
 		this.day=day;

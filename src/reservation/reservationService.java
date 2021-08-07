@@ -160,7 +160,7 @@ public class reservationService  {
 		showStage(parent2,"showTimePage");
 		
 		mainController mainController=fxmlLoader.getController();
-		mainController.setParent2(parent,parent2,day);
+		mainController.setinsert(parent,parent2,day);
 	}
 	private void getTimes(Parent parent2,Parent parent,int day) {
 		System.out.println("getTimes"+day);
