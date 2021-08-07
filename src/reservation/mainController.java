@@ -13,14 +13,9 @@ public class mainController  implements Initializable  {
 	
 	private Parent parent;
 	private Parent parent2;
-	private String ab;
 	private reservationService reservationService;
 	int day;
 
-
-
-	
-	
 	public void setParent(Parent parent) {
 		this.parent=parent;
 	}
@@ -43,12 +38,11 @@ public class mainController  implements Initializable  {
 		day=2;
 	}
 	public void insert() {
-		System.out.println("insert"+ab);
 		reservationService.insert(parent,"kim@kim.com","kim",parent2,day);
 	}
 	public void show() {
+	
 		System.out.println("show");
-		System.out.println(day);
 		reservationService.showTimePage(parent,day);
 	}
 

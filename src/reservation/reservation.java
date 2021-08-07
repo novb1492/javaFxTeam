@@ -14,41 +14,14 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class reservation extends Application{
+	private reservationService reservationService=new reservationService();
 	public static void main(String[] args) {
 		launch(args);
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("reservationPage.fxml"));
-		Parent root = loader.load();
-		LocalDate today=LocalDate.now();
-		YearMonth yearMonth=YearMonth.from(today);
+		reservationService.showDatePage();
 		
-		Label month=(Label) root.lookup("#month");
-		month.setText(Integer.toString(today.getMonthValue()));
-		
-		int lastDay=yearMonth.lengthOfMonth();
-	
-		
-		for(int i=1;i<=lastDay;i++) {
-			Button button=(Button) root.lookup("#day"+i);
-			button.setText(Integer.toString(i));
-		}
-		
-		if(lastDay==30) {
-			Button button=(Button) root.lookup("#day31");
-			button.setText("x");
-		}
-	
-
-		primaryStage.setTitle("reservationPage");
-		primaryStage.setScene(new Scene(root));
-		primaryStage.show();
-		
-		mainController mainController=loader.getController();
-		mainController.setParent(root);
-		
-
 	}
 }
