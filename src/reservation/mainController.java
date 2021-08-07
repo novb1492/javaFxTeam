@@ -159,6 +159,9 @@ public class mainController  implements Initializable  {
 		System.out.println("show");
 		reservationService.showTimePage(parent,day);
 	}
+	public void goToShowRerservationPage() {
+		System.out.println("여기입니다");
+	}
 
 
 
