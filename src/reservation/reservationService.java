@@ -10,8 +10,6 @@ import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,7 +18,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
@@ -84,6 +81,7 @@ public class reservationService  {
 				button.setDisable(true);
 			}
 		}
+		checkCloseHour(root);
 		if(lastDay==30) {
 			System.out.println("끝달이 31이 아닙니다");
 			Button button=(Button) root.lookup("#day31");
@@ -105,6 +103,14 @@ public class reservationService  {
 				button.setText("x");
 				button.setDisable(true);
 			}
+		}
+	}
+	public void checkCloseHour(Parent root) {
+		System.out.println("checkCloseHour");
+		if(LocalDateTime.now().getHour()>=closeTime) {
+			System.out.println("영업이 종료 되었습니다");
+			Button button=(Button) root.lookup("#day"+LocalDateTime.now().getDayOfMonth());
+			button.setDisable(true);
 		}
 	}
 	private void showStage(Parent root,String pageName ) {
