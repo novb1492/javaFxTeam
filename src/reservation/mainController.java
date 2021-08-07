@@ -156,7 +156,6 @@ public class mainController  implements Initializable  {
 		reservationService.insert(parent,"kim@kim.com","kim",parent2,day);
 	}
 	public void show() {
-	
 		System.out.println("show");
 		reservationService.showTimePage(parent,day);
 	}

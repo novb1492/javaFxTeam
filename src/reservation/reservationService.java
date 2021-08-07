@@ -72,7 +72,7 @@ public class reservationService  {
 			Button button=(Button) root.lookup("#day"+i);
 			button.setText(Integer.toString(i));
 			if(checkFullDay(stringToTimestamp(month.getText(),i))||compareDate(stringToTimestamp(month.getText(), i),LocalDateTime.now())) {
-				System.out.println(i+"일은 6예약이 다 찼거나 지난 요일입니다");
+				System.out.println(i+"일은 예약이 다 찼거나 지난 요일입니다");
 				button.setDisable(true);
 			}
 		}
@@ -160,11 +160,9 @@ public class reservationService  {
 			}
 			if(temp==maxPeopleByTime) {
 				System.out.println(time+"시는 모든인원이 다찼습니다");
-				temp=0;
 				return true;
 			}
 		}
-		temp=0;
 		return false;
 	}
 	public void insert(Parent parent,String email,String name,Parent parent2,int day) {
@@ -181,7 +179,7 @@ public class reservationService  {
 				System.out.println(day+"일은 예약이 다 찼거나 지난 요일 예약시도 입니다");
 				return;
 			}
-			if(compareTime(month, day,time)) {
+			if(compareTime(month,day,time)) {
 				System.out.println(time+"시는 모든인원이 다찼습니다");
 				return;
 			}
