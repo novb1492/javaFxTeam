@@ -121,12 +121,9 @@ public class reservationService  {
 		Label getReservationPageMonth=(Label) parent.lookup("#month");
 		System.out.println(getReservationPageMonth.getText());
 		
-		Timestamp selectDate = stringToTimestamp(getReservationPageMonth.getText(), day);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		System.out.println(sdf.format(selectDate));
-		
 		Label showSelectDate=(Label) parent2.lookup("#labelDate");
-		showSelectDate.setText(sdf.format(selectDate)+"");
+		showSelectDate.setText(sdf.format(stringToTimestamp(getReservationPageMonth.getText(), day)));
 		
 		getTimes(parent2,parent,day);
 		showStage(parent2,"showTimePage");
