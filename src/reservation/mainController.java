@@ -169,9 +169,6 @@ public class mainController  implements Initializable  {
 	public void showDatePage() {
 		reservationService.showDatePage(parent,tempEmail,tempName);
 	}
-	public void closeWindow() {
-		reservationService.closeWindow(parent);
-	}
 	public void CancelProc(ActionEvent actionEvent) {
 		cancleService.windowClose(actionEvent);
 	}
