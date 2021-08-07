@@ -140,8 +140,13 @@ public class reservationService  {
 		for(int i=openTime;i<=closeTime;i++) {
 			RadioButton radioButton=(RadioButton) parent2.lookup("#rdaio"+i);
 			radioButton.setText(i+"½Ã~"+(i+1)+"½Ã");
-			if(i<=localDateTime.getHour()||compareTime(month, day,i)) {
+			if(compareTime(month, day,i)) {
 				radioButton.setDisable(true);
+			}
+			if(day==localDateTime.getDayOfMonth()) {
+				if(i<=localDateTime.getHour()) {
+					radioButton.setDisable(true);
+				}
 			}
 		}
 	}

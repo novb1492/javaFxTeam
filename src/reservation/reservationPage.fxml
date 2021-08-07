@@ -16,51 +16,51 @@
          <children>
             <Button fx:id="day1" mnemonicParsing="false" onAction="#click" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
             <Button fx:id="day2" mnemonicParsing="false" onAction="#click2" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day3" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day4" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day5" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day6" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day3" mnemonicParsing="false" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day4" mnemonicParsing="false" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day5" mnemonicParsing="false" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day6" mnemonicParsing="false" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
             <Button fx:id="day7" mnemonicParsing="false" onAction="#click7" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="day8" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day9" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day10" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day11" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day12" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day13" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day14" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day8" mnemonicParsing="false" onAction="#click8" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day9" mnemonicParsing="false" onAction="#click9" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day10" mnemonicParsing="false" onAction="#click10" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day11" mnemonicParsing="false" onAction="#click11" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day12" mnemonicParsing="false" onAction="#click12" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day13" mnemonicParsing="false" onAction="#click13" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day14" mnemonicParsing="false" onAction="#click14" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="day15" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day16" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day17" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day18" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day19" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day20" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day21" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day15" mnemonicParsing="false" onAction="#click15" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day16" mnemonicParsing="false" onAction="#click16" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day17" mnemonicParsing="false" onAction="#click17" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day18" mnemonicParsing="false" onAction="#click18" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day19" mnemonicParsing="false" onAction="#click19" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day20" mnemonicParsing="false" onAction="#click20" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day21" mnemonicParsing="false" onAction="#click21" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="day22" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day23" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day24" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day25" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day26" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day27" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day28" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day22" mnemonicParsing="false" onAction="#click22" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day23" mnemonicParsing="false" onAction="#click23" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day24" mnemonicParsing="false" onAction="#click24" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day25" mnemonicParsing="false" onAction="#click25" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day26" mnemonicParsing="false" onAction="#click26" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day27" mnemonicParsing="false" onAction="#click27" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day28" mnemonicParsing="false" onAction="#click28" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="day29" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day30" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button fx:id="day31" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day29" mnemonicParsing="false" onAction="#click29" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day30" mnemonicParsing="false" onAction="#click30" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day31" mnemonicParsing="false" onAction="#click31" onMouseClicked="#show" prefHeight="200.0" prefWidth="100.0" text="Button" />
          </children>
       </HBox>
    </children>
