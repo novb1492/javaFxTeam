@@ -185,8 +185,8 @@ public class reservationService  {
 				System.out.println(time+"시는 모든인원이 다찼습니다");
 				return;
 			}
-			if(time<=localDateTime.getHour()) {
-				if(localDateTime.getDayOfMonth()==day) {
+			if(localDateTime.getDayOfMonth()==day) {
+				if(time<=localDateTime.getHour()) {
 					System.out.println(time+"시는 지난 시간입니다");
 					return;
 				}
