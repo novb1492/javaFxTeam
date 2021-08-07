@@ -4,17 +4,20 @@ package reservation;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.rmi.CORBA.Tie;
+
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -73,8 +76,8 @@ public class reservationService  {
 				button.setDisable(true);
 			}
 		}
-		
 		if(lastDay==30) {
+			System.out.println("끝달이 31이 아닙니다");
 			Button button=(Button) root.lookup("#day31");
 			button.setText("x");
 		}
@@ -113,20 +116,23 @@ public class reservationService  {
 	public void showTimePage(Parent parent,int day) {
 		System.out.println("showTimePage");
 		FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("showTimePage.fxml"));
-		try {
-			Parent parent2=fxmlLoader.load();
-			Stage stage=new Stage();
-			
-			getTimes(parent2,parent,day);
-			stage.setScene(new Scene(parent2));
-			stage.show();
-			
-			mainController mainController=fxmlLoader.getController();
-			mainController.setParent2(parent,parent2,day);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Parent parent2=loadPageAndGetParent(fxmlLoader);
+	
+		Label getReservationPageMonth=(Label) parent.lookup("#month");
+		System.out.println(getReservationPageMonth.getText());
+		
+		Timestamp selectDate = stringToTimestamp(getReservationPageMonth.getText(), day);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println(sdf.format(selectDate));
+		
+		Label showSelectDate=(Label) parent2.lookup("#labelDate");
+		showSelectDate.setText(sdf.format(selectDate)+"");
+		
+		getTimes(parent2,parent,day);
+		showStage(parent2,"showTimePage");
+		
+		mainController mainController=fxmlLoader.getController();
+		mainController.setParent2(parent,parent2,day);
 	}
 	private void getTimes(Parent parent2,Parent parent,int day) {
 		System.out.println("getTimes"+day);
@@ -143,16 +149,15 @@ public class reservationService  {
 		}
 	}
 	public boolean compareTime(Label month,int day,int time) {
+		System.out.println("compareTime");
 		List<reservationDto>array= findByDate(stringToTimestamp(month.getText(),day));
 		int temp=0;
 		for(reservationDto r:array) {
-			System.out.println(r.getTime()+"시간"+time);
-			System.out.println(temp);
 			if(r.getTime()==time) {
 				temp++;
 			}
 			if(temp==maxPeopleByTime) {
-				System.out.println(time+"은 모든인원이 다찼습니다");
+				System.out.println(time+"시는 모든인원이 다찼습니다");
 				temp=0;
 				return true;
 			}
@@ -161,12 +166,32 @@ public class reservationService  {
 		return false;
 	}
 	public void insert(Parent parent,String email,String name,Parent parent2,int day) {
+		Alert alert=new Alert(AlertType.ERROR);
 		try {
+			Label month=(Label)parent.lookup("#month");
+			int time=getSelectTime(parent2);
+			LocalDateTime localDateTime=LocalDateTime.now(); 
 			if(day==0&&day>31) {
 				System.out.println("잘못된 날짜 선택입니다");
 				return;
 			}
-			Label month=(Label)parent.lookup("#month");
+			if(checkFullDay(stringToTimestamp(month.getText(),day))||compareDate(stringToTimestamp(month.getText(), day),LocalDateTime.now())) {
+				System.out.println(day+"일은 예약이 다 찼거나 지난 요일 예약시도 입니다");
+				return;
+			}
+			if(time<=localDateTime.getHour()||compareTime(month, day,time)) {
+				System.out.println(time+"시는 모든인원이 다찼습니다");
+				return;
+			}
+			if(email==null||name==null||email.isEmpty()||name.isEmpty()) {
+				System.out.println("회원정보가 없는 예약 시도 입니다");
+				return;
+			}
+			if(month.getText().isEmpty()||month.getText()==null||time==0) {
+				System.out.println("예약 정보가 없는 예약 시도입니다");
+				return;
+			}
+
 			System.out.println("예약월"+month.getText());
 			System.out.println("예약일"+day);
 		
@@ -180,7 +205,7 @@ public class reservationService  {
 			reservationDto.setEmail(email);
 			reservationDto.setName(name);
 			reservationDto.setCreated(created);
-			reservationDto.setTime(getSelectTime(parent2));
+			reservationDto.setTime(time);
 			reservationDto.setrDate(rDate);
 			reservationDao.insert(reservationDto);
 		} catch (Exception e) {
