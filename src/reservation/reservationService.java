@@ -8,8 +8,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.List;
-
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -61,8 +59,8 @@ public class reservationService  {
 		for(int i=1;i<=lastDay;i++) {
 			Button button=(Button) root.lookup("#day"+i);
 			button.setText(Integer.toString(i));
-			if(checkFullDay(Timestamp.valueOf("2021-"+month.getText()+"-"+i+" 00:00:00"))) {
-				System.out.println(i+"일은 6예약이 다 찼습니다");
+			if(checkFullDay(stringToTimestamp(month.getText(),i))||compareDate(stringToTimestamp(month.getText(), i),LocalDateTime.now())) {
+				System.out.println(i+"일은 6예약이 다 찼거나 지난 요일입니다");
 				button.setDisable(true);
 			}
 		}
@@ -107,6 +105,17 @@ public class reservationService  {
 			e.printStackTrace();
 		}
 	}
+	public boolean compareDate(Timestamp timestamp,LocalDateTime localDateTime) {
+		LocalDateTime loaDateTime2=timestamp.toLocalDateTime();
+		
+		if(localDateTime.getDayOfMonth()==loaDateTime2.getDayOfMonth()){
+			return false;
+		}
+		else if(localDateTime.isAfter(loaDateTime2)){
+           return true;
+        }
+        return false;
+	}
 	public void insert(Parent parent,String email,String name,Parent parent2,int day) {
 		try {
 			if(day==0&&day>31) {
@@ -118,8 +127,7 @@ public class reservationService  {
 			System.out.println("예약일"+day);
 			
 			int time=5;
-
-			Timestamp rDate=Timestamp.valueOf("2021-"+month.getText()+"-"+day+" 00:00:00");
+			Timestamp rDate=stringToTimestamp(month.getText(),day);
 			System.out.println("사용일자 "+rDate);
 			
 			Timestamp created=Timestamp.valueOf(LocalDateTime.now());
@@ -136,6 +144,9 @@ public class reservationService  {
 			e.printStackTrace();
 		}
 			
+	}
+	public Timestamp stringToTimestamp(String month,int day) {
+		return Timestamp.valueOf("2021-"+month+"-"+day+" 00:00:00");
 	}
 	
 
