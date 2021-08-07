@@ -7,7 +7,11 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.rmi.CORBA.Tie;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,6 +26,7 @@ public class reservationService  {
 	private final int openTime=9;
 	private final int closeTime=18;
 	private final int maxOfDay=60;
+	private final int maxPeopleByTime=6;
 	private reservationDao reservationDao=new reservationDao();
 	
 	public void showDatePage() {
@@ -91,6 +96,7 @@ public class reservationService  {
 		return false;
 	}
 	public List<reservationDto> findByDate(Timestamp timestamp) {
+		System.out.println("findByDate");
 		return reservationDao.findAllByDate(timestamp);
 	}
 	public boolean compareDate(Timestamp timestamp,LocalDateTime localDateTime) {
@@ -111,7 +117,7 @@ public class reservationService  {
 			Parent parent2=fxmlLoader.load();
 			Stage stage=new Stage();
 			
-			getTimes(parent2);
+			getTimes(parent2,parent,day);
 			stage.setScene(new Scene(parent2));
 			stage.show();
 			
@@ -122,16 +128,37 @@ public class reservationService  {
 			e.printStackTrace();
 		}
 	}
-	private void getTimes(Parent parent2) {
-		System.out.println("getTimes");
+	private void getTimes(Parent parent2,Parent parent,int day) {
+		System.out.println("getTimes"+day);
 		LocalDateTime localDateTime=LocalDateTime.now();
+		Label month=(Label)parent.lookup("#month");
+	
+		
 		for(int i=openTime;i<=closeTime;i++) {
 			RadioButton radioButton=(RadioButton) parent2.lookup("#rdaio"+i);
 			radioButton.setText(i+"시~"+(i+1)+"시");
-			if(i<=localDateTime.getHour()) {
+			if(i<=localDateTime.getHour()||compareTime(month, day,i)) {
 				radioButton.setDisable(true);
 			}
 		}
+	}
+	public boolean compareTime(Label month,int day,int time) {
+		List<reservationDto>array= findByDate(stringToTimestamp(month.getText(),day));
+		int temp=0;
+		for(reservationDto r:array) {
+			System.out.println(r.getTime()+"시간"+time);
+			System.out.println(temp);
+			if(r.getTime()==time) {
+				temp++;
+			}
+			if(temp==maxPeopleByTime) {
+				System.out.println(time+"은 모든인원이 다찼습니다");
+				temp=0;
+				return true;
+			}
+		}
+		temp=0;
+		return false;
 	}
 	public void insert(Parent parent,String email,String name,Parent parent2,int day) {
 		try {
@@ -142,18 +169,18 @@ public class reservationService  {
 			Label month=(Label)parent.lookup("#month");
 			System.out.println("예약월"+month.getText());
 			System.out.println("예약일"+day);
-			
-			int time=5;
+		
 			Timestamp rDate=stringToTimestamp(month.getText(),day);
 			System.out.println("사용일자 "+rDate);
 			
 			Timestamp created=Timestamp.valueOf(LocalDateTime.now());
 			System.out.println("예약일자 "+created);
+			
 			reservationDto reservationDto=new reservationDto();
 			reservationDto.setEmail(email);
 			reservationDto.setName(name);
 			reservationDto.setCreated(created);
-			reservationDto.setTime(time);
+			reservationDto.setTime(getSelectTime(parent2));
 			reservationDto.setrDate(rDate);
 			reservationDao.insert(reservationDto);
 		} catch (Exception e) {
@@ -161,6 +188,22 @@ public class reservationService  {
 			e.printStackTrace();
 		}
 			
+	}
+	public int getSelectTime(Parent parent2) {
+		List<RadioButton>array=new ArrayList<RadioButton>();
+		LocalDateTime localDateTime=LocalDateTime.now();
+		int time=0;
+		for(int i=localDateTime.getHour();i<=closeTime;i++) {
+			array.add((RadioButton)parent2.lookup("#rdaio"+i));
+		}
+		for(RadioButton r:array) {
+			if(r.isSelected()) {
+				String sTime=r.getText();
+				time=Integer.parseInt(sTime.split("~")[0].replace("시",""));
+			}
+		}
+		System.out.println("사용 시간 "+time);
+		return time;
 	}
 	public Timestamp stringToTimestamp(String month,int day) {
 		return Timestamp.valueOf("2021-"+month+"-"+day+" 00:00:00");

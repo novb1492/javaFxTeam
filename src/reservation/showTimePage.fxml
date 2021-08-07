@@ -18,7 +18,7 @@
       <RadioButton fx:id="rdaio14" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
       <RadioButton fx:id="rdaio15" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
       <RadioButton fx:id="rdaio16" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
-      <RadioButton fx:id="rdaio17" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
+      <RadioButton fx:id="rdaio17" mnemonicParsing="false" text="17~18시" toggleGroup="$toggle" />
       <RadioButton fx:id="rdaio18" mnemonicParsing="false" text="RadioButton" toggleGroup="$toggle" />
       <Button mnemonicParsing="false" onAction="#insert" text="Button" />
    </children>
