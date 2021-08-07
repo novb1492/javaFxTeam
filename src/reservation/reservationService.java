@@ -119,7 +119,7 @@ public class reservationService  {
 		Parent parent2=loadPageAndGetParent(fxmlLoader);
 	
 		Label getReservationPageMonth=(Label) parent.lookup("#month");
-		System.out.println(getReservationPageMonth.getText());
+		System.out.println(getReservationPageMonth.getText()+"달");
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Label showSelectDate=(Label) parent2.lookup("#labelDate");
@@ -181,9 +181,15 @@ public class reservationService  {
 				System.out.println(day+"일은 예약이 다 찼거나 지난 요일 예약시도 입니다");
 				return;
 			}
-			if(time<=localDateTime.getHour()||compareTime(month, day,time)) {
+			if(compareTime(month, day,time)) {
 				System.out.println(time+"시는 모든인원이 다찼습니다");
 				return;
+			}
+			if(time<=localDateTime.getHour()) {
+				if(localDateTime.getDayOfMonth()==day) {
+					System.out.println(time+"시는 지난 시간입니다");
+					return;
+				}
 			}
 			if(email==null||name==null||email.isEmpty()||name.isEmpty()) {
 				System.out.println("회원정보가 없는 예약 시도 입니다");
@@ -220,7 +226,7 @@ public class reservationService  {
 		List<RadioButton>array=new ArrayList<RadioButton>();
 		LocalDateTime localDateTime=LocalDateTime.now();
 		int time=0;
-		for(int i=localDateTime.getHour();i<=closeTime;i++) {
+		for(int i=openTime;i<=closeTime;i++) {
 			array.add((RadioButton)parent2.lookup("#rdaio"+i));
 		}
 		for(RadioButton r:array) {
