@@ -1,6 +1,7 @@
 package reservation;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ public class mainController  implements Initializable  {
 	private Parent parent2;
 	private reservationService reservationService;
 	private cancleService cancleService;
+	private int plusMonth;
 	private int day;
 	private String tempEmail="kim@kim.com";
 	private String tempName="kim";
@@ -157,6 +159,22 @@ public class mainController  implements Initializable  {
 		System.out.println("click31");
 		day=31;
 	}
+	public void nextMonth() {
+		System.out.println("nextMonth");
+		if(plusMonth>12) {
+			System.out.println("12월을 초과합니다");
+		}else {
+			plusMonth++;
+		}
+	}
+	public void beforeMonth() {
+		System.out.println("beforeMonth");
+		if(plusMonth<1||plusMonth<LocalDate.now().getMonthValue()) {
+			System.out.println("1월 보다 작거나 현재 월보다 작은 월입니다");
+		}else {
+			plusMonth--;
+		}
+	}
 	public void insert() {
 		reservationService.insert(parent,"kim@kim.com","kim",parent2,day);
 	}
@@ -167,7 +185,7 @@ public class mainController  implements Initializable  {
 		System.out.println("여기입니다");
 	}
 	public void showDatePage() {
-		reservationService.showDatePage(parent,tempEmail,tempName);
+		reservationService.showDatePage(parent,tempEmail,tempName,plusMonth);
 	}
 	public void CancelProc(ActionEvent actionEvent) {
 		cancleService.windowClose(actionEvent);

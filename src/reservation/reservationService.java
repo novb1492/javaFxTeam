@@ -30,11 +30,11 @@ public class reservationService  {
 	private reservationDao reservationDao=new reservationDao();
 
 	
-	public void showDatePage(Parent parent,String email,String name) {
+	public void showDatePage(Parent parent,String email,String name,int plusMonth) {
 		System.out.println("showDatePage");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("reservationPage.fxml"));
 		Parent root=loadPageAndGetParent(loader);
-		LocalDate today=LocalDate.now();
+		LocalDate today=LocalDate.now().plusMonths(plusMonth);
 		YearMonth yearMonth=YearMonth.from(today);
 		int lastDay=yearMonth.lengthOfMonth();
 		
