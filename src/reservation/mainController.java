@@ -159,22 +159,6 @@ public class mainController  implements Initializable  {
 		System.out.println("click31");
 		day=31;
 	}
-	public void nextMonth() {
-		System.out.println("nextMonth");
-		if(plusMonth>12) {
-			System.out.println("12월을 초과합니다");
-		}else {
-			plusMonth++;
-		}
-	}
-	public void beforeMonth() {
-		System.out.println("beforeMonth");
-		if(plusMonth<1||plusMonth<LocalDate.now().getMonthValue()) {
-			System.out.println("1월 보다 작거나 현재 월보다 작은 월입니다");
-		}else {
-			plusMonth--;
-		}
-	}
 	public void insert() {
 		reservationService.insert(parent,"kim@kim.com","kim",parent2,day);
 	}

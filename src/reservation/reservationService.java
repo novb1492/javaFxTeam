@@ -5,6 +5,7 @@ package reservation;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
@@ -29,25 +30,49 @@ public class reservationService  {
 	private final int maxPeopleByTime=6;
 	private reservationDao reservationDao=new reservationDao();
 
-	
 	public void showDatePage(Parent parent,String email,String name,int plusMonth) {
 		System.out.println("showDatePage");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("reservationPage.fxml"));
 		Parent root=loadPageAndGetParent(loader);
-		LocalDate today=LocalDate.now().plusMonths(plusMonth);
+		Button nextButton=(Button) root.lookup("#nextButton");
+		
+		nextButton.setOnMouseClicked(event->{
+			System.out.println(event.getClickCount());
+			int p=2;
+			showDatePage(root, email, name,p);
+		});
+		LocalDate today=LocalDate.now().plusMonths(-1);
 		YearMonth yearMonth=YearMonth.from(today);
 		int lastDay=yearMonth.lengthOfMonth();
+		int start=0;
+		for(int i=1;i<=7;i++) {
+			LocalDate date = LocalDate.of(2021,today.getMonthValue(),i);
+			DayOfWeek dayOfWeek = date.getDayOfWeek();
+			for(int ii=i;ii<=7;ii++) {
+				if(dayOfWeek.getValue()==ii) {
+					Button button=(Button) root.lookup("#day"+ii);
+					button.setText(Integer.toString(i));
+					start=ii;
+					break;
+				}
+			}
+		}
+		int temp=1+start;
+		for(int i=start+1;i<=lastDay+3;i++) {
+			Button button=(Button) root.lookup("#day"+i);
+			button.setText(Integer.toString(temp));
+			temp+=1;
+		}
 		
 		showName(root, name);
 		getMonth(root,today);
-		getDays(root, lastDay);
+		//getDays(root, lastDay);
 		showStage(root, "reservationPage");
 
 		mainController mainController=loader.getController();
 		mainController.setParent(root);
 		
 	}
-
 	public void showName(Parent root,String name) {
 		System.out.println("showname");
 		Label showEmail=(Label)root.lookup("#name");
