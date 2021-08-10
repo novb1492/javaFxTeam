@@ -1,6 +1,7 @@
 package reservation;
 
 import java.net.URL;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -81,7 +82,10 @@ public class mainController  implements Initializable  {
 	}
 	public void click12() {
 		System.out.println("click12");
-		day=12;
+		LocalDate date = LocalDate.of(2021,8,1);
+		DayOfWeek dayOfWeek = date.getDayOfWeek();
+		System.out.println(dayOfWeek.getValue());
+		day=12-dayOfWeek.getValue();
 	}
 	public void click13() {
 		System.out.println("click13");
@@ -105,7 +109,10 @@ public class mainController  implements Initializable  {
 	}
 	public void click18() {
 		System.out.println("click18");
-		day=18;
+		LocalDate date = LocalDate.of(2021,8,1);
+		DayOfWeek dayOfWeek = date.getDayOfWeek();
+		System.out.println(dayOfWeek.getValue());
+		day=18-dayOfWeek.getValue()+1;
 	}
 	public void click19() {
 		System.out.println("click19");
@@ -158,6 +165,33 @@ public class mainController  implements Initializable  {
 	public void click31() {
 		System.out.println("click31");
 		day=31;
+	}
+	public void click32() {
+		System.out.println("click32");
+		day=32;
+	}
+	public void click33() {
+		System.out.println("click33");
+		day=33;
+	}
+	public void click34() {
+		System.out.println("click34");
+		day=34;
+	}
+	public void click35() {
+		System.out.println("click35");
+		day=35;
+	}
+	public void click36() {
+		System.out.println("click36");
+		day=36;
+	}
+	public void click37() {
+		System.out.println("click37");
+		LocalDate date = LocalDate.of(2021,8,1);
+		DayOfWeek dayOfWeek = date.getDayOfWeek();
+		System.out.println(dayOfWeek.getValue());
+		day=37-dayOfWeek.getValue()+1;
 	}
 	public void insert() {
 		reservationService.insert(parent,"kim@kim.com","kim",parent2,day);

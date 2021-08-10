@@ -41,7 +41,7 @@ public class reservationService  {
 			int p=2;
 			showDatePage(root, email, name,p);
 		});
-		LocalDate today=LocalDate.now().plusMonths(1);
+		LocalDate today=LocalDate.now().plusMonths(0);
 		YearMonth yearMonth=YearMonth.from(today);
 		int lastDay=yearMonth.lengthOfMonth();
 		int start=0;
@@ -56,6 +56,10 @@ public class reservationService  {
 			System.out.println(i);
 			Button button=(Button) root.lookup("#day"+i);
 			button.setText(Integer.toString(temp));
+			if(checkFullDay(stringToTimestamp(today.getMonthValue()+"",temp))||compareDate(stringToTimestamp(today.getMonthValue()+"", temp),LocalDateTime.now())) {
+				System.out.println(i+"일은 예약이 다 찼거나 지난 요일입니다");
+				button.setDisable(true);
+			}
 			temp+=1;
 		}
 		
@@ -266,7 +270,7 @@ public class reservationService  {
 			reservationDto.setrDate(rDate);
 			reservationDao.insert(reservationDto);
 			System.out.println("예약성공");
-			closeWindow(parent2);
+			//closeWindow(parent2);
 		} catch (Exception e) {
 			System.out.println("예약중 오류 발생");
 			e.printStackTrace();
