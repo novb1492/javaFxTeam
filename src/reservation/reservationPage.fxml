@@ -121,14 +121,10 @@
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Button fx:id="day36" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
-            <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
+            <Button fx:id="day37" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Button" />
          </children>
       </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" />
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Button mnemonicParsing="false" onAction="#goToShowRerservationPage" text="예약내역페이지" />

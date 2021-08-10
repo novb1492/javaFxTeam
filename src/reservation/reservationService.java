@@ -41,24 +41,19 @@ public class reservationService  {
 			int p=2;
 			showDatePage(root, email, name,p);
 		});
-		LocalDate today=LocalDate.now().plusMonths(4);
+		LocalDate today=LocalDate.now().plusMonths(1);
 		YearMonth yearMonth=YearMonth.from(today);
 		int lastDay=yearMonth.lengthOfMonth();
 		int start=0;
-		for(int i=1;i<=7;i++) {
-			LocalDate date = LocalDate.of(2021,today.getMonthValue(),i);
-			DayOfWeek dayOfWeek = date.getDayOfWeek();
-			for(int ii=i;ii<=7;ii++) {
-				if(dayOfWeek.getValue()==ii) {
-					Button button=(Button) root.lookup("#day"+ii);
-					button.setText(Integer.toString(i));
-					start=ii;
-					break;
-				}
-			}
-		}
-		int temp=1+start;
-		for(int i=start+1;i<=lastDay+3;i++) {
+		LocalDate date = LocalDate.of(2021,today.getMonthValue(),1);
+		DayOfWeek dayOfWeek = date.getDayOfWeek();
+		System.out.println(dayOfWeek.getValue());
+	
+		int temp=1;
+		start=dayOfWeek.getValue();
+		System.out.println(temp+"temp");
+		for(int i=start;i<lastDay+start;i++) {
+			System.out.println(i);
 			Button button=(Button) root.lookup("#day"+i);
 			button.setText(Integer.toString(temp));
 			temp+=1;
